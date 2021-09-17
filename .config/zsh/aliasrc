@@ -1,0 +1,49 @@
+#!/bin/sh
+
+# Dotfiles/OS
+alias i="yay --sync --needed --nodiffmenu --nocleanmenu --noconfirm"
+alias yay-ls='comm -23 <(pacman -Qqett | sort) <(pacman -Qqg base -g base-devel | sort | uniq) | less'
+alias aliases='micro ~/.config/zsh/aliasrc'
+
+# Verbosity and better default settings.
+alias \
+  ls='exa --all --sort=type --icons' \
+  cp="cp -iv" \
+  mv="mv -iv" \
+  rm="rm -v" \
+  md="mkdir -pv"
+  df='df -h' \
+  free='free -m' \
+
+# Colorize commands when possible.
+alias \
+  grep="grep --color=auto" \
+  diff="diff --color=auto" \
+
+# Redshift
+alias \
+  r6='redshift -PO 6500' \
+  r5='redshift -PO 5500' \
+  r4='redshift -PO 4500' \
+  r3='redshift -PO 3500' \
+  r2='redshift -PO 2500' \
+  r1='redshift -PO 1500' \
+
+# Instaloader
+alias stories='instaloader --login julito.xyz --no-posts --no-profile-pic --no-metadata-json --stories'
+
+# Dev
+alias n=npm
+alias touch-package-json='echo "{ \"private\": true }" > package.json'
+alias server='python -m http.server 8000'
+alias xtw='xcolor-tailwind'
+
+# Misc
+alias note='micro ~/.cache/note'
+alias xclip='xclip -sel clip'
+
+# Node
+alias m='mortem 1992/07/07'
+alias ole='ole | less'
+alias node-cli-boilerplate='curl -fsSL https://github.com/sobrinojulian/node-cli-boilerplate/archive/main.tar.gz | tar -xz --strip-components=1'
+alias boca='aquehorajuegaboca | less'

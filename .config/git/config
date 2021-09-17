@@ -1,0 +1,10 @@
+[user]
+	name = Sobrino Julian
+	email = sobrinojulian@protonmail.com
+	signingkey = BBB4AD0AFC483608CEBF89B73029345FE3EFE918
+[credential]
+	helper = cache --timeout=34560000
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = main

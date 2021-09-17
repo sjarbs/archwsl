@@ -1,0 +1,9 @@
+.cache
+.config/configstore
+.config/gh
+.config/zsh/.zshrc.zwc
+.fnm
+.vscode
+.vscode-server
+.local/share
+var
