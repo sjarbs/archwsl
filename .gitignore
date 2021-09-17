@@ -7,3 +7,5 @@
 .vscode-server
 .local/share
 var
+.config/micro/bindings.json
+.config/micro/buffers/history
