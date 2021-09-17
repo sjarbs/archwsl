@@ -1,11 +1,11 @@
-# Manjaro
-> Manjaro XFCE After Install
+# archwsl
+> archwsl after install
 
 ## GPG 
-> Do it before Before Dotfiles!
 ```sh
 yay -S gnupg
-mkdir -p ~/.local/share/gnupg # To prevent ownership issues: mkdir $GNUPGHOME
+GNUPGHOME="~/.local/share/gnupg"
+mkdir -p $GNUPGHOME # To prevent ownership issues
 gpg --import private.asc
 gpg --edit-key <KEY_ID>
 # gpg> trust
@@ -14,32 +14,29 @@ gpg --edit-key <KEY_ID>
 # gpg> quit
 ```
 
-## Fonts
-```sh
-yay -S noto-fonts
-yay -S ttf-jetbrains-mono
-yay -S noto-fonts-emoji-apple
-yay -S ttf-nerd-fonts-symbols-mono
-```
-
-## Restore Dotfiles
+## Dotfiles
 ```sh
 yay -S stow antigen
-git clone https://github.com/sjarbs/dotfiles ~/Dotfiles
-cd ~/Dotfiles && stow .
+git clone https://github.com/sjarbs/archwsl ~/dotfiles
+cd ~/dotfiles && stow .
 
+## Password Store
 yay -S pass
-git clone https://github.com/sjarbs/password-store ~/.local/share/password-store # $PASSWORD_STORE_DIR
-cp -r $BACKUP/.mozilla ~/
+PASSWORD_STORE_DIR="~/.local/share/password-store"
+git clone https://github.com/sjarbs/password-store $PASSWORD_STORE_DIR
 ```
 
-## Runtimes
-```sh
-yay -S asdf-vm
-
-asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs
-asdf install nodejs
-
-asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby
-asdf install ruby
+## Install
+```
+antigen
+exa
+fnm-bin
+github-cli
+htop
+micro
+pass
+reflector
+rsync
+trash-cli
+yay-bin
 ```
