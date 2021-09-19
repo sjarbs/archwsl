@@ -21,5 +21,7 @@ export PYTHONSTARTUP="$XDG_CONFIG_HOME/pythonstartup.py"
 
 # XDG_DATA_HOME
 export ADOTDIR="$XDG_DATA_HOME/antigen"
+export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
+export BUNDLE_USER_HOME="$XDG_DATA_HOME/bundle"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"

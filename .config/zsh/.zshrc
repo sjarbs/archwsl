@@ -20,3 +20,4 @@ antigen apply
 source $ZDOTDIR/aliasrc
 
 eval "$(fnm env)"
+. /opt/asdf-vm/asdf.sh
