@@ -13,6 +13,12 @@ gpg --edit-key <KEY_ID>
 # gpg> y
 # gpg> quit
 ```
+### Fix `gpg: WARNING: unsafe permissions on homedir`
+```sh
+# https://gist.github.com/oseme-techguy/bae2e309c084d93b75a9b25f49718f85#gistcomment-3585593
+find $GNUPGHOME -type f -exec chmod 600 {} \; # Set 600 for files
+find $GNUPGHOME -type d -exec chmod 700 {} \; # Set 700 for directories
+```
 
 ## Dotfiles
 ```sh
