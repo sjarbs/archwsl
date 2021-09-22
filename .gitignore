@@ -1,11 +1,15 @@
-.cache
-.config/configstore
-.config/gh
-.config/zsh/.zshrc.zwc
-.fnm
 .vscode
-.vscode-server
+.cache
 .local/share
 var
-.config/micro/bindings.json
+
+# caches
 .config/micro/buffers/history
+.config/zsh/.zshrc.zwc
+.config/configstore
+.config/nextjs-nodejs/config.json
+.vscode-server
+.fnm
+
+# configs
+.config/gh
