@@ -3,6 +3,9 @@
 # This file is run when calling  on login (before .xinitrc)
 # Environmental variables are set here.
 
+# Default programs
+export BROWSER='/mnt/c/Program\ Files/BraveSoftware/Brave-Browser/Application/brave.exe'
+
 # XDG Base Directory
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"

@@ -32,7 +32,7 @@ PASSWORD_STORE_DIR="~/.local/share/password-store"
 git clone https://github.com/sjarbs/password-store $PASSWORD_STORE_DIR
 ```
 
-## Install
+## pacman
 ```
 antigen
 exa
@@ -46,3 +46,8 @@ rsync
 trash-cli
 yay-bin
 ```
+
+## asdf
+```
+yay -S --needed coreutils curl
+asdf plugin-add golang https://github.com/kennyp/asdf-golang.git

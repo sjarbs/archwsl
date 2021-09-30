@@ -2,6 +2,7 @@
 
 # Dotfiles/OS
 alias i="yay --sync --needed --nodiffmenu --nocleanmenu --noconfirm"
+alias u="yay -Syu --nodiffmenu --nocleanmenu --noconfirm"
 alias yay-ls='comm -23 <(pacman -Qqett | sort) <(pacman -Qqg base -g base-devel | sort | uniq) | less'
 alias aliases='micro ~/.config/zsh/aliasrc'
 
