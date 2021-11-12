@@ -1,10 +1,14 @@
 #!/bin/sh
 
 # Dotfiles/OS
-alias i="yay --sync --needed --nodiffmenu --nocleanmenu --noconfirm"
-alias u="yay -Syu --nodiffmenu --nocleanmenu --noconfirm"
+alias add="yay --sync --needed --nodiffmenu --nocleanmenu --noconfirm"
+alias update="yay -Syu --nodiffmenu --nocleanmenu --noconfirm"
 alias yay-ls='comm -23 <(pacman -Qqett | sort) <(pacman -Qqg base -g base-devel | sort | uniq) | less'
 alias aliases='micro ~/.config/zsh/aliasrc'
+alias clean="echo 'find node_modules,etc and delete recursively'"
+
+# Git/Github
+alias issues="gh issue list"
 
 # Verbosity and better default settings.
 alias \

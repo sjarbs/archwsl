@@ -20,7 +20,6 @@ antigen apply
 
 source $ZDOTDIR/aliasrc
 
-eval "$(fnm env)"
 . /opt/asdf-vm/asdf.sh
 
 # Fix: 'ERROR: UtilConnectToInteropServer:300: connect failed 2'
@@ -33,3 +32,8 @@ fix_wsl2_interop() {
     done
 }
 fix_wsl2_interop
+
+# Hack: vscode+wsl never prompts for gpg passphrase
+# https://stackoverflow.com/questions/61939216/vscode-with-ubuntu-wsl-2-never-prompts-for-gpg-passphrase-even-after-configura
+export GPG_TTY=$TTY
+echo "test" | gpg --clearsign > /dev/null 2>&1
