@@ -1,6 +1,10 @@
 # root
 var
-.local/share
+.local/share/**
+
+# https://stackoverflow.com/questions/5533050/gitignore-exclude-folder-but-include-specific-subfolder
+!.local/share/gnupg/
+!.local/share/gnupg/gpg-agent.conf
 
 # secrets
 .config/gh/hosts.yml
