@@ -1,7 +1,7 @@
 # archwsl
 > archwsl after install
 
-## GPG 
+## GPG
 ```sh
 yay -S gnupg
 GNUPGHOME="~/.local/share/gnupg"
@@ -35,8 +35,7 @@ git clone https://github.com/sjarbs/password-store $PASSWORD_STORE_DIR
 ## pacman
 ```
 antigen
-exa
-fnm-bin
+lsd
 github-cli
 htop
 micro
@@ -49,5 +48,11 @@ yay-bin
 
 ## asdf
 ```
-yay -S --needed coreutils curl
-asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
+yay -S asdf-vm
+
+asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs
+asdf install nodejs
+
+asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby
+asdf install ruby
+```

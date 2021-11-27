@@ -12,7 +12,7 @@ alias issues="gh issue list"
 
 # Verbosity and better default settings.
 alias \
-  ls='exa --all --sort=type --icons' \
+  ls='lsd --almost-all --group-dirs=first' \
   cp="cp -iv" \
   mv="mv -iv" \
   rm="rm -v" \

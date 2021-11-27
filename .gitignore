@@ -15,7 +15,7 @@ var
 .vscode
 .vscode-server
 .wrangler
-.config/micro/buffers/history
+.config/micro
 .config/zsh/.zshrc.zwc
 .config/configstore
 .config/nextjs-nodejs
