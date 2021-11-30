@@ -5,12 +5,12 @@ SPACESHIP_PROMPT_ADD_NEWLINE=false
 SPACESHIP_DIR_TRUNC_REPO=false
 SPACESHIP_EXEC_TIME_PREFIX="⌚ "
 
+
 # Antigen
 source /usr/share/zsh/share/antigen.zsh
   antigen use oh-my-zsh
   antigen bundle git
   antigen bundle npm
-  antigen bundle poetry
   antigen bundle command-not-found
   antigen bundle common-aliases
   antigen bundle zsh-users/zsh-syntax-highlighting
@@ -35,5 +35,5 @@ fix_wsl2_interop
 
 # Hack: vscode+wsl never prompts for gpg passphrase
 # https://stackoverflow.com/questions/61939216/vscode-with-ubuntu-wsl-2-never-prompts-for-gpg-passphrase-even-after-configura
-export GPG_TTY=$TTY
-echo "test" | gpg --clearsign > /dev/null 2>&1
+# export GPG_TTY=$TTY
+# echo "test" | gpg --clearsign > /dev/null 2>&1

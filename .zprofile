@@ -4,7 +4,7 @@
 # Environmental variables are set here.
 
 # Default programs
-export BROWSER='/mnt/c/Program\ Files/BraveSoftware/Brave-Browser/Application/brave.exe'
+export BROWSER='/mnt/c/Users/SJ/scoop/apps/brave/current/brave-portable.exe'
 
 # XDG Base Directory
 export XDG_CACHE_HOME="$HOME/.cache"
