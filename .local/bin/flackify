@@ -1,0 +1,3 @@
+#!/bin/sh
+
+find '/mnt/c/Users/SJ/Documents/Techno/HQ' \( -name '*aiff' -o -name '*wav' \) -exec flac --best {} --delete-input-file \;

@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+const d = new Date("1992/07/07");
+
+const ley = 75; // human life expectancy (years)
+const led = ley * 365; // human life expectancy (days)
+
+const ndl = Math.round(Math.abs((d - +new Date()) / 864e5))
+const pro = (ndl / led) * 100;
+console.log(`${pro.toFixed(2)}%`)

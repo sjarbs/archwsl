@@ -8,6 +8,8 @@ var
 
 # secrets
 .config/gh/hosts.yml
+.config/instaloader
+.ngrok2
 
 # caches
 .netrc

@@ -4,8 +4,9 @@
 alias add="yay --sync --needed --nodiffmenu --nocleanmenu --noconfirm"
 alias update="yay -Syu --nodiffmenu --nocleanmenu --noconfirm"
 alias yay-ls='comm -23 <(pacman -Qqett | sort) <(pacman -Qqg base -g base-devel | sort | uniq) | less'
-alias aliases='micro ~/.config/zsh/aliasrc'
 alias clean="echo 'find node_modules,etc and delete recursively'"
+alias xclip='xclip -sel clip'
+alias weight="du -hs"
 
 # Git/Github
 alias issues="gh issue list"
@@ -15,7 +16,6 @@ alias \
   ls='lsd --almost-all --group-dirs=first' \
   cp="cp -iv" \
   mv="mv -iv" \
-  rm="rm -v" \
   md="mkdir -pv"
   df='df -h' \
   free='free -m' \
@@ -40,15 +40,10 @@ alias stories='instaloader --login julito.xyz --no-posts --no-profile-pic --no-m
 # Dev
 alias n=npm
 alias touch-package-json='echo "{ \"private\": true }" > package.json'
-alias server='python -m http.server 8000'
-alias xtw='xcolor-tailwind'
-
-# Misc
-alias note='micro ~/.cache/note'
-alias xclip='xclip -sel clip'
-
-# Node
-alias m='mortem 1992/07/07'
-alias ole='ole | less'
 alias node-cli-boilerplate='curl -fsSL https://github.com/sobrinojulian/node-cli-boilerplate/archive/main.tar.gz | tar -xz --strip-components=1'
+alias server='python -m http.server 8000'
+
+# npm i *
+alias ole='ole | less'
 alias boca='aquehorajuegaboca | less'
+alias xtw='xcolor-tailwind'

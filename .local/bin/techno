@@ -1,0 +1,11 @@
+#!/usr/bin/sh
+
+yt-dlp  --output /mnt/c/Users/SJ/Documents/Techno/Youtube/ \
+        --download-archive /mnt/c/Users/SJ/Documents/Techno/Youtube/.archive.txt \
+        --yes-playlist "https://www.youtube.com/playlist?list=PLOX9iIsMbf0Fj-MGB67wwREAqsw68ATls" \
+        --ignore-errors \
+        --extract-audio \
+        --format bestaudio \
+        --audio-format mp3 \
+        --output "%(title)s.%(ext)s" \
+        --xattrs --add-metadata --embed-thumbnail
