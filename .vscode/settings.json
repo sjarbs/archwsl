@@ -1,6 +1,7 @@
 {
   "files.exclude": {
     "**/.cache": true,
+    "**/.ngrok2": true, // 👀 https://github.com/inconshreveable/ngrok/issues/771
     "**/.vscode-server": true
   },
   "workbench.colorCustomizations": {

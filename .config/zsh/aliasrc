@@ -2,7 +2,7 @@
 
 # Dotfiles/OS
 alias add="yay --sync --needed --nodiffmenu --nocleanmenu --noconfirm"
-alias update="yay -Syu --nodiffmenu --nocleanmenu --noconfirm"
+alias update="yay -Syu --nodiffmenu --nocleanmenu --noconfirm && antigen update && pipx upgrade-all"
 alias yay-ls='comm -23 <(pacman -Qqett | sort) <(pacman -Qqg base -g base-devel | sort | uniq) | less'
 alias clean="echo 'find node_modules,etc and delete recursively'"
 alias xclip='xclip -sel clip'
