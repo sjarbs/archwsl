@@ -2,7 +2,8 @@
   "files.exclude": {
     "**/.cache": true,
     "**/.ngrok2": true, // 👀 https://github.com/inconshreveable/ngrok/issues/771
-    "**/.vscode-server": true
+    "**/.vscode-server": true,
+    "**/.ssh": true
   },
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#3ff845",

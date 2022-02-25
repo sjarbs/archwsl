@@ -10,6 +10,7 @@ var
 .config/gh/hosts.yml
 .config/instaloader
 .ngrok2
+.ssh
 
 # caches
 .netrc

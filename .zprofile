@@ -7,7 +7,7 @@
 export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
 
 # Default programs
-export BROWSER='/mnt/c/Users/SJ/scoop/apps/brave/current/brave-portable.exe'
+# export BROWSER='/mnt/c/Users/SJ/scoop/apps/brave/current/brave-portable.exe'
 
 # XDG Base Directory
 export XDG_CACHE_HOME="$HOME/.cache"

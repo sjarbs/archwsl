@@ -33,6 +33,9 @@ fix_wsl2_interop() {
 }
 fix_wsl2_interop
 
+# Go to ~, instead of /mnt/c/Users/$USER
+cd
+
 # Hack: vscode+wsl never prompts for gpg passphrase
 # https://stackoverflow.com/questions/61939216/vscode-with-ubuntu-wsl-2-never-prompts-for-gpg-passphrase-even-after-configura
 # export GPG_TTY=$TTY
