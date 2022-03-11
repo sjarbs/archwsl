@@ -17,6 +17,7 @@ var
 .cache
 .vscode-server
 .wrangler
+.gem
 .config/micro
 .config/zsh/.zshrc.zwc
 .config/configstore
