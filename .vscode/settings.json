@@ -3,27 +3,5 @@
     "**/.vscode-server": true,
     "**/.cache": true,
     "**/.ssh": true,
-    "**/.ngrok2": true, // FIXME: 👀 https://github.com/inconshreveable/ngrok/issues/771
-    "**/.gem": true // FIXME: Why?
-  },
-  "workbench.colorCustomizations": {
-    "activityBar.activeBackground": "#3ff845",
-    "activityBar.activeBorder": "#8884fb",
-    "activityBar.background": "#3ff845",
-    "activityBar.foreground": "#15202b",
-    "activityBar.inactiveForeground": "#15202b99",
-    "activityBarBadge.background": "#8884fb",
-    "activityBarBadge.foreground": "#15202b",
-    "sash.hoverBorder": "#3ff845",
-    "statusBar.background": "#0ef615",
-    "statusBar.foreground": "#15202b",
-    "statusBarItem.hoverBackground": "#08c90d",
-    "statusBarItem.remoteBackground": "#0ef615",
-    "statusBarItem.remoteForeground": "#15202b",
-    "titleBar.activeBackground": "#0ef615",
-    "titleBar.activeForeground": "#15202b",
-    "titleBar.inactiveBackground": "#0ef61599",
-    "titleBar.inactiveForeground": "#15202b99"
-  },
-  "peacock.remoteColor": "#0ef615"
+  }
 }

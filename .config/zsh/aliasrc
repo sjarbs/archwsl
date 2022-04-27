@@ -2,6 +2,7 @@
 
 # Dotfiles/OS
 alias add="yay --sync --needed --nodiffmenu --nocleanmenu --noconfirm"
+alias remove="yay -Rsu"
 alias update="yay -Syu --nodiffmenu --nocleanmenu --noconfirm && antigen update && pipx upgrade-all && gem update shopify-cli"
 alias yay-ls='comm -23 <(pacman -Qqett | sort) <(pacman -Qqg base -g base-devel | sort | uniq) | less'
 alias clean="echo 'find node_modules,etc and delete recursively'"
@@ -9,7 +10,12 @@ alias xclip='xclip -sel clip'
 alias weight="du -hs"
 
 # Git/Github
-alias issues="gh issue list"
+alias onefetch="onefetch --no-palette --show-logo never"
+alias of="onefetch"
+alias gi="gh issue list"
+alias gr="git remote -v"
+alias gs="git status"
+alias gl="git log"
 
 # Verbosity and better default settings.
 alias \
@@ -38,7 +44,8 @@ alias \
 alias stories='instaloader --login julito.xyz --no-posts --no-profile-pic --no-metadata-json --stories'
 
 # Dev
-alias n=npm
+alias npm='pnpm'
+alias n='pnpm'
 alias touch-package-json='echo "{ \"private\": true }" > package.json'
 alias node-cli-boilerplate='curl -fsSL https://github.com/sobrinojulian/node-cli-boilerplate/archive/main.tar.gz | tar -xz --strip-components=1'
 alias server='python -m http.server 8000'

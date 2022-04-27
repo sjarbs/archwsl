@@ -20,7 +20,6 @@ antigen apply
 
 source $ZDOTDIR/aliasrc
 
-. /opt/asdf-vm/asdf.sh
 
 # Fix: 'ERROR: UtilConnectToInteropServer:300: connect failed 2'
 # https://github.com/microsoft/WSL/issues/5065#issuecomment-682198412

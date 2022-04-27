@@ -3,12 +3,12 @@
 # This file is run when calling  on login (before .xinitrc)
 # Environmental variables are set here.
 
-# Adds `~/.local/bin` to $PATH
-export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
+export PATH="$PATH:$HOME/.local/bin"
 
 # Default programs
 # FIXME: eg: `gh browse` not working
 # export BROWSER='/mnt/c/Program Files/BraveSoftware/Brave-Browser/Application/brave.exe'
+export DESKTOP="/mnt/c/Users/SJ/Desktop/"
 
 # XDG Base Directory
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -33,7 +33,3 @@ export BUNDLE_USER_HOME="$XDG_DATA_HOME/bundle"
 export GOPATH="$XDG_DATA_HOME/go"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
-
-# Ruby
-export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
-export PATH="$PATH:$GEM_HOME/bin"
