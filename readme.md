@@ -1,58 +1,82 @@
 # archwsl
-> archwsl after install
 
-## GPG
+## wsl
+
+```powershell
+sudo dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+sudo dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+# reboot
+sudo wsl --update
+sudo wsl --set-default-version 2
+scoop install archwsl
+```
+
+## initialize
+
+[read more...](https://wsldl-pg.github.io/ArchW-docs/How-to-Setup/)
+
 ```sh
-yay -S gnupg
-GNUPGHOME="~/.local/share/gnupg"
-mkdir -p $GNUPGHOME # To prevent ownership issues
-gpg --import private.asc
+# root password
+passwd
+
+# default user
+pacman -S --needed zsh
+echo "%wheel ALL=(ALL) ALL" > /etc/sudoers.d/wheel
+useradd -m -G wheel -s /bin/zsh sj
+passwd sj
+exit
+Arch.exe config --default-user sj
+
+# keyring
+sudo pacman-key --init
+sudo pacman-key --populate
+sudo pacman -Syy archlinux-keyring
+```
+
+## yay
+
+```sh
+sudo pacman -S --needed base-devel git
+git clone https://aur.archlinux.org/yay-bin.git
+cd yay-bin
+makepkg -si
+cd .. && rm -rf yay-bin
+yay
+```
+
+## programs
+
+```sh
+alias install="yay --sync --needed --nodiffmenu --nocleanmenu --noconfirm"
+install zsh stow antigen starship
+install wget moreutils lsd trash-cli fzf bat pfetch
+install git gnupg github-cli pnpm-bin nodejs-lts-gallium
+```
+
+## dotfiles
+
+```sh
+gh auth login
+git clone https://github.com/sjarbs/archwsl ~/dotfiles
+cd ~/dotfiles && stow --adopt .
+```
+
+## gpg
+
+```sh
+git clone https://github.com/sjarbs/keys /tmp/keys
+mv ~/.gnupg $GNUPGHOME
+gpg --import /tmp/keys/private.asc && rm -rf /tmp/keys
 gpg --edit-key <KEY_ID>
 # gpg> trust
 # gpg> 5
 # gpg> y
 # gpg> quit
 ```
-### Fix `gpg: WARNING: unsafe permissions on homedir`
-```sh
-# https://gist.github.com/oseme-techguy/bae2e309c084d93b75a9b25f49718f85#gistcomment-3585593
-find $GNUPGHOME -type f -exec chmod 600 {} \; # Set 600 for files
-find $GNUPGHOME -type d -exec chmod 700 {} \; # Set 700 for directories
-```
 
-## Dotfiles
-```sh
-yay -S stow antigen
-git clone https://github.com/sjarbs/archwsl ~/dotfiles
-cd ~/dotfiles && stow .
+## fonts
 
-## Password Store
-yay -S pass
-PASSWORD_STORE_DIR="~/.local/share/password-store"
-git clone https://github.com/sjarbs/password-store $PASSWORD_STORE_DIR
-```
-
-## pacman
-```
-antigen
-lsd
-github-cli
-htop
-micro
-pass
-reflector
-rsync
-trash-cli
-yay-bin
-```
-
-## asdf
-```
-yay -S asdf-vm
-
-asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs
-asdf install nodejs
-
-asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby
-asdf install ruby
+```powershell
+scoop bucket add nerd-fonts
+scoop install JetBrainsMono-NF
 ```

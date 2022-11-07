@@ -1,0 +1,44 @@
+#!/usr/bin/env python
+
+# Sounds an alarm if the internet connection is up
+from urllib.request import urlopen
+from time import sleep
+from os import path, system
+
+
+def playsound():
+    player = "mpg123"
+    flags = "-q"
+    # for relative file
+    # path_to_dir = path.dirname(path.abspath( __file__ ))
+    path_to_dir = "~/.local/share/"
+    sound = "alarm.mp3"
+    dir = f'{path_to_dir}/{sound}'
+    
+    system(f'{player} {flags} {dir}')
+
+
+def is_online():
+    try:
+        urlopen("http://icanhazip.com/", timeout=1)
+        return True
+    except:
+        return False
+
+
+def is_online_loop():
+    while not is_online():
+        print("✖ Offline")
+        sleep(2)
+    print("✔ Online")
+    playsound()
+
+
+def main():
+    try:
+        is_online_loop()
+    except KeyboardInterrupt:
+        pass
+
+if __name__ == "__main__":
+    main()

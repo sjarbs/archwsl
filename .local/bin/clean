@@ -1,0 +1,24 @@
+#!/usr/bin/bash
+
+find $1 -type d \
+	\(	\
+		`#Next` \
+		-name ".next" -or \
+		`#Elenventy` \
+		-name "node_modules" -or \
+		-name "_site" -or \
+		`#Jekyll` \
+		-name "_site" -or \
+		-name ".sass-cache" -or \
+		-name ".jekyll-cache" -or \
+		-name "_jekyll-metadata" -or \
+		`#Python` \
+		-name ".venv" -or \
+		-name "package.egg-info" -or \
+		-name ".pytest_cache" -or \
+		-name ".mypy_cache" -or \
+		-name "__pycache__" \
+	\) \
+	-prune \
+	-exec echo {} \; \
+	-exec rm -rf {} \;

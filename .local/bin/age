@@ -1,0 +1,6 @@
+#!/usr/bin/env node
+
+const birth = new Date("1992/07/07");
+const now = new Date()
+const age = Math.abs(birth - now) / 3.154e+10;
+console.log(`${age.toFixed(2)}y`)
