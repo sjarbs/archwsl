@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+# If it doesn't automatically loads then: `source .zshrc`
+
 # Default programs
 export EDITOR="code"
 export BROWSER="wslview"
@@ -30,7 +32,7 @@ export PYTHONSTARTUP="$XDG_CONFIG_HOME/pythonstartup.py"
 export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java"
 
 # XDG_DATA_HOME
-export ADOTDIR="$XDG_DATA_HOME/antigen"
+export ZPLUG_HOME="$XDG_DATA_HOME/zplug"
 export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
 export BUNDLE_USER_HOME="$XDG_DATA_HOME/bundle"
 export GOPATH="$XDG_DATA_HOME/go"
@@ -42,24 +44,25 @@ export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export PATH="$PATH:$PNPM_HOME"
 export PATH="$PATH:$HOME/.local/bin"
 
-# Antigen
-source /usr/share/zsh/share/antigen.zsh
-  antigen use oh-my-zsh
-  antigen bundle git
-  antigen bundle command-not-found
-  antigen bundle common-aliases
-  antigen bundle zsh-users/zsh-syntax-highlighting
-  antigen bundle zsh-users/zsh-autosuggestions
-antigen apply
+# Fix WSL
+export GPG_TTY=$(tty)
+
+# https://github.com/zplug/zplug
+source /usr/share/zsh/scripts/zplug/init.zsh
+  zplug "zsh-users/zsh-syntax-highlighting", defer:2
+  zplug "zsh-users/zsh-autosuggestions", defer:2
+  zplug "plugins/git", from:oh-my-zsh
+  zplug "plugins/command-not-found", from:oh-my-zsh
+  zplug "plugins/common-aliases", from:oh-my-zsh
+zplug load
 
 # Aliases
 # Dotfiles/OS
 alias add="yay --sync --needed --nodiffmenu --nocleanmenu --noconfirm"
 alias remove="yay -Rsu"
-alias update="yay -Syu --nodiffmenu --nocleanmenu --noconfirm && antigen update"
-#alias update="yay -Syu --nodiffmenu --nocleanmenu --noconfirm && antigen update && pipx upgrade-all && gem update shopify-cli"
-alias yay-ls='comm -23 <(pacman -Qqett | sort) <(pacman -Qqg base -g base-devel | sort | uniq) | less'
-# alias clean=clean # from .local/bin/clean
+alias yay-ls='pacman -Qei | awk "/^Name/ { name=\$3 } /^Groups/ { if ( \$3 != \"base\" && \$3 != \"base-devel\" ) { print name } }"'
+alias yay-clean="sudo yay -Rsn $(yay -Qdtq)"
+alias yay-aur="yay -Qqm"
 alias xclip='xclip -sel clip'
 alias weight="du -hs"
 
@@ -76,7 +79,7 @@ alias \
   ls='lsd --almost-all --group-dirs=first' \
   cp="cp -iv" \
   mv="mv -iv" \
-  md="mkdir -pv"
+  md="mkdir -pv" \
   df='df -h' \
   free='free -m' \
 
@@ -103,7 +106,7 @@ alias \
 
 
 # Instaloader
-alias stories='instaloader --login julito.xyz --no-posts --no-profile-pic --no-metadata-json --stories'
+# alias stories='instaloader --login julito.xyz --no-posts --no-profile-pic --no-metadata-json --stories'
 
 # Dev
 alias npm='pnpm'
