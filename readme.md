@@ -10,7 +10,7 @@ sudo dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /
 # reboot
 sudo wsl --update
 sudo wsl --set-default-version 2
-winget install -e --id 9MZNMNKSM73X # Arch WSL
+scoop install archwsl # or `winget install -e --id 9MZNMNKSM73X` # Arch WSL
 
 # if it was already installed then:
 wsl --set-version Arch 2
@@ -21,57 +21,62 @@ wsl --set-version Arch 2
 [read more...](https://wsldl-pg.github.io/ArchW-docs/How-to-Setup/)
 
 ```sh
+# enter from powershell
+Arch.exe
 # root password
 passwd
 
 # default user
-pacman -S --needed zsh
 echo "%wheel ALL=(ALL) ALL" > /etc/sudoers.d/wheel
-useradd -m -G wheel -s /bin/zsh sj
+useradd -m -G wheel -s /bin/bash sj
 passwd sj
 exit
 Arch.exe config --default-user sj
 
 # keyring
+Arch.exe
 sudo pacman-key --init
 sudo pacman-key --populate
 sudo pacman -Syy archlinux-keyring
 
 # pacman eyecandy (not included in dotfiles because is a root config)
-sudo micro /etc/pacman.conf
-# uncomment `Color`
+alias i="sudo pacman --sync --needed --noconfirm"
+i micro
 
 # locale (otherwise perl cries)
-sed --in-place 's/^#en_US\.UTF-8/en_US\.UTF-8/' /etc/locale.gen # uncomment
+sudo sed --in-place 's/^#en_US\.UTF-8/en_US\.UTF-8/' /etc/locale.gen # uncomment
 locale-gen
 ```
 
 ## yay
 
 ```sh
-sudo pacman -S --needed base-devel git
+i base-devel git
 git clone https://aur.archlinux.org/yay-bin.git
 cd yay-bin
 makepkg -si # (doesnt work in WSL1)
 cd .. && rm -rf yay-bin
-yay
+# reflector
+yay --noconfirm
 ```
 
 ## programs
 
 ```sh
-alias install="yay --sync --needed --nodiffmenu --nocleanmenu --noconfirm"
-install zsh stow zplug starship # prompt
-install wget moreutils lsd trash-cli fzf bat pfetch pass ffmpeg yt-dlp p7zip # clis
-install git gnupg github-cli pnpm-bin nodejs-lts-gallium # dev
-install htop micro man-db man-pages # tuis
+alias i="yay --sync --needed --noconfirm" # --nodiffmenu --nocleanmenu
+i zsh stow zplug starship # prompt
+i htop micro man-db man-pages # tuis
+i wget moreutils lsd trash-cli fzf bat pfetch pass ffmpeg yt-dlp p7zip # clis
+i git gnupg github-cli pnpm-bin nodejs-lts-gallium # dev
 ```
 
 ## dotfiles
 
 ```sh
+chsh -s /bin/zsh # logout and login
 gh auth login
 git clone https://github.com/sjarbs/archwsl ~/dotfiles
+mkdir -p ~/.local/share/gnupg
 cd ~/dotfiles && stow --adopt .
 zplug install
 ```
