@@ -1,19 +1,17 @@
 # archwsl
 
 ## wsl
+[read more...](https://learn.microsoft.com/en-us/windows/wsl/install-manual)
 
 ```powershell
-# enable WSL (or use CTT Tool)
+# enable WSL
 sudo dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 sudo dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-
-# reboot
-sudo wsl --update
-sudo wsl --set-default-version 2
-scoop install archwsl # or `winget install -e --id 9MZNMNKSM73X` # Arch WSL
-
-# if it was already installed then:
-wsl --set-version Arch 2
+Restart-Computer
+# then
+wsl --update
+wsl --set-default-version 2
+scoop install archwsl
 ```
 
 ## initialize
@@ -21,42 +19,41 @@ wsl --set-version Arch 2
 [read more...](https://wsldl-pg.github.io/ArchW-docs/How-to-Setup/)
 
 ```sh
-# enter from powershell
-Arch.exe
-# root password
-passwd
+Arch.exe # enter from powershell
+passwd # set root password
+
+# keyring
+pacman-key --init
+pacman-key --populate
+pacman -Syy archlinux-keyring
+pacman -Su
+
+# mirrorlist
+pacman --sync --needed --noconfirm reflector rsync
+cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+reflector --latest 20 --sort rate --save /etc/pacman.d/mirrorlist
+
+# locale (otherwise perl cries)
+sed --in-place 's/^#en_US\.UTF-8/en_US\.UTF-8/' /etc/locale.gen # uncomment
+locale-gen
 
 # default user
 echo "%wheel ALL=(ALL) ALL" > /etc/sudoers.d/wheel
-useradd -m -G wheel -s /bin/bash sj
+pacman --sync --needed --noconfirm zsh
+useradd -m -G wheel -s /bin/zsh sj
 passwd sj
 exit
 Arch.exe config --default-user sj
-
-# keyring
-Arch.exe
-sudo pacman-key --init
-sudo pacman-key --populate
-sudo pacman -Syy archlinux-keyring
-
-# pacman eyecandy (not included in dotfiles because is a root config)
-alias i="sudo pacman --sync --needed --noconfirm"
-i micro
-
-# locale (otherwise perl cries)
-sudo sed --in-place 's/^#en_US\.UTF-8/en_US\.UTF-8/' /etc/locale.gen # uncomment
-locale-gen
 ```
 
 ## yay
 
 ```sh
-i base-devel git
+sudo pacman --sync --needed --noconfirm base-devel git
 git clone https://aur.archlinux.org/yay-bin.git
 cd yay-bin
-makepkg -si # (doesnt work in WSL1)
+makepkg -si
 cd .. && rm -rf yay-bin
-# reflector
 yay --noconfirm
 ```
 
@@ -73,7 +70,6 @@ i git gnupg github-cli pnpm-bin nodejs-lts-gallium # dev
 ## dotfiles
 
 ```sh
-chsh -s /bin/zsh # logout and login
 gh auth login
 git clone https://github.com/sjarbs/archwsl ~/dotfiles
 mkdir -p ~/.local/share/gnupg
