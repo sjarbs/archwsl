@@ -64,7 +64,7 @@ alias i="yay --sync --needed --noconfirm" # --nodiffmenu --nocleanmenu
 i zsh stow zplug starship # prompt
 i htop micro man-db man-pages # tuis
 i wget moreutils lsd trash-cli fzf bat pfetch pass ffmpeg yt-dlp p7zip # clis
-i git gnupg github-cli pnpm-bin nodejs-lts-gallium # dev
+i git gnupg github-cli nodejs-lts-hydrogen pnpm # dev
 ```
 
 ## dotfiles
