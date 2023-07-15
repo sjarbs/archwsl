@@ -1,7 +1,6 @@
 # archwsl
 
-## wsl
-[read more...](https://learn.microsoft.com/en-us/windows/wsl/install-manual)
+## [wsl](https://learn.microsoft.com/en-us/windows/wsl/install-manual)
 
 ```powershell
 # enable WSL
@@ -14,9 +13,7 @@ wsl --set-default-version 2
 scoop install archwsl
 ```
 
-## initialize
-
-[read more...](https://wsldl-pg.github.io/ArchW-docs/How-to-Setup/)
+## [initialize](https://wsldl-pg.github.io/ArchW-docs/How-to-Setup/)
 
 ```sh
 Arch.exe # enter from powershell
@@ -93,7 +90,7 @@ zplug install
 git clone https://github.com/sjarbs/keys /tmp/keys
 mv ~/.gnupg $GNUPGHOME
 gpg --import /tmp/keys/private.asc && rm -rf /tmp/keys
-gpg --edit-key <KEY_ID>
+gpg --edit-key <KEY_ID> # tab for autocompletion
 # gpg> trust
 # gpg> 5
 # gpg> y
@@ -110,4 +107,16 @@ find $GNUPGHOME -type d -exec chmod 700 {} \;
 ```powershell
 scoop bucket add nerd-fonts
 scoop install JetBrainsMono-NF
+```
+
+## vscode
+
+There is a [bug](https://stackoverflow.com/questions/74764599/histfile-in-integrated-terminal-not-the-same-as-normal-terminal) with VSCode's ZSH shell integration that overwrites `$HISTFILE`.
+
+Add this line to your `.vscode/settings.json`
+
+```json
+{
+  "terminal.integrated.shellIntegration.enabled": false
+}
 ```
