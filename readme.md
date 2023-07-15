@@ -74,12 +74,20 @@ echo -e "\n# https://wslutiliti.es/wslu/\n[wslutilities]\nServer = https://pkg.w
 yay -Sy --noconfirm && yay -S --noconfirm wslu
 ```
 
+## `mkdir -p`
+
+This is done in order to prevent git to track unwanted files and permissions warnings.
+
+```sh
+mkdir -p ~/.local/share/gnupg # `gpg: WARNING: unsafe permissions on homedir`
+mkdir -p ~/.config/micro      # https://github.com/zyedidia/micro/issues/2004
+```
+
 ## dotfiles
 
 ```sh
 gh auth login
 git clone https://github.com/sjarbs/archwsl ~/dotfiles
-mkdir -p ~/.local/share/gnupg
 cd ~/dotfiles && stow --adopt .
 zplug install
 ```
