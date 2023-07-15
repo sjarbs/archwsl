@@ -1,40 +1,49 @@
-# archwsl
+# Arch Linux WSL Setup Guide
 
-## [wsl](https://learn.microsoft.com/en-us/windows/wsl/install-manual)
+This guide provides instructions for setting up Arch Linux on WSL (Windows Subsystem for Linux). Follow the steps below to install and configure Arch Linux WSL on your Windows machine.
+
+## [WSL Installation](https://learn.microsoft.com/en-us/windows/wsl/install-manual)
+
+Open PowerShell and run the following commands:
 
 ```powershell
-# enable WSL
+# Enable WSL
 sudo dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 sudo dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 Restart-Computer
-# then
+
+# Set WSL version 2 as default
 wsl --update
 wsl --set-default-version 2
+
+# Install Arch Linux WSL using Scoop package manager
 scoop install archwsl
 ```
 
-## [initialize](https://wsldl-pg.github.io/ArchW-docs/How-to-Setup/)
+## Initialization
+
+Follow these steps to initialize your Arch Linux WSL:
 
 ```sh
-Arch.exe # enter from powershell
-passwd # set root password
+Arch.exe # Enter from PowerShell
+passwd   # Set root password
 
-# keyring
+# Keyring
 pacman-key --init
 pacman-key --populate
 pacman -Syy archlinux-keyring
 pacman -Su
 
-# mirrorlist
+# Mirrorlist
 pacman --sync --needed --noconfirm reflector rsync
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 reflector --latest 20 --sort rate --save /etc/pacman.d/mirrorlist
 
-# locale (otherwise perl cries)
-sed --in-place 's/^#en_US\.UTF-8/en_US\.UTF-8/' /etc/locale.gen # uncomment
+# Locale (required for Perl)
+sed --in-place 's/^#en_US\.UTF-8/en_US\.UTF-8/' /etc/locale.gen # Uncomment
 locale-gen
 
-# default user
+# Create a default user
 echo "%wheel ALL=(ALL) ALL" > /etc/sudoers.d/wheel
 pacman --sync --needed --noconfirm zsh
 useradd -m -G wheel -s /bin/zsh sj
@@ -43,7 +52,9 @@ exit
 Arch.exe config --default-user sj
 ```
 
-## yay
+## yay (AUR Helper)
+
+Install `yay`, an AUR helper, with the following commands:
 
 ```sh
 sudo pacman --sync --needed --noconfirm base-devel git
@@ -54,17 +65,27 @@ cd .. && rm -rf yay-bin
 yay --noconfirm
 ```
 
-## programs
+## Installing Programs
+
+Use the following commands to install various programs:
 
 ```sh
-alias i="yay --sync --needed --noconfirm" # --nodiffmenu --nocleanmenu
-i zsh stow zplug starship # prompt
-i htop micro man-db man-pages # tuis
-i wget moreutils lsd trash-cli fzf bat pfetch pass ffmpeg yt-dlp p7zip # clis
-i git gnupg github-cli nodejs-lts-hydrogen pnpm # dev
+# Prompt and shell-related
+yay -S --needed --noconfirm zsh stow zplug starship
+
+# TUIs
+yay -S --needed --noconfirm htop micro man-db man-pages
+
+# Command-line utilities
+yay -S --needed --noconfirm wget moreutils lsd trash-cli fzf bat pfetch pass ffmpeg yt-dlp p7zip
+
+# Development-related
+yay -S --needed --noconfirm git gnupg github-cli nodejs-lts-hydrogen pnpm
 ```
 
-## [wslu](https://wslutiliti.es/wslu/)
+## WSL Utilities
+
+To install `wslu` ([WSL Utilities](https://wslutiliti.es/wslu/)), follow these steps:
 
 ```sh
 wget https://pkg.wslutiliti.es/public.key
@@ -74,16 +95,18 @@ echo -e "\n# https://wslutiliti.es/wslu/\n[wslutilities]\nServer = https://pkg.w
 yay -Sy --noconfirm && yay -S --noconfirm wslu
 ```
 
-## `mkdir -p`
+## Create Directories
 
-This is done in order to prevent git to track unwanted files and permissions warnings.
+Create the following directories to prevent unwanted file tracking and permission warnings:
 
 ```sh
 mkdir -p ~/.local/share/gnupg # `gpg: WARNING: unsafe permissions on homedir`
 mkdir -p ~/.config/micro      # https://github.com/zyedidia/micro/issues/2004
 ```
 
-## dotfiles
+## Dotfiles
+
+Set up the dotfiles provided in this repository:
 
 ```sh
 gh auth login
@@ -92,36 +115,38 @@ cd ~/dotfiles && stow --adopt .
 zplug install
 ```
 
-## gpg
+## GPG Configuration
+
+Configure GPG by executing the following commands:
 
 ```sh
 git clone https://github.com/sjarbs/keys /tmp/keys
 mv ~/.gnupg $GNUPGHOME
 gpg --import /tmp/keys/private.asc && rm -rf /tmp/keys
-gpg --edit-key <KEY_ID> # tab for autocompletion
+gpg --edit-key <KEY_ID> # Press Tab for autocompletion
 # gpg> trust
 # gpg> 5
 # gpg> y
 # gpg> quit
 
-# fix `gpg: WARNING: unsafe permissions on homedir`
-# https://gist.github.com/oseme-techguy/bae2e309c084d93b75a9b25f49718f85#gistcomment-3585593
+# Fix `gpg: WARNING: unsafe permissions on homedir`
+# See: https://gist.github.com/oseme-techguy/bae2e309c084d93b75a9b25f49718f85#gistcomment-3585593
 find $GNUPGHOME -type f -exec chmod 600 {} \;
 find $GNUPGHOME -type d -exec chmod 700 {} \;
 ```
 
-## fonts
+## Fonts
+
+Install Nerd Fonts using the following PowerShell commands:
 
 ```powershell
 scoop bucket add nerd-fonts
 scoop install JetBrainsMono-NF
 ```
 
-## vscode
+## VSCode Integration
 
-There is a [bug](https://stackoverflow.com/questions/74764599/histfile-in-integrated-terminal-not-the-same-as-normal-terminal) with VSCode's ZSH shell integration that overwrites `$HISTFILE`.
-
-Add this line to your `.vscode/settings.json`
+To resolve the `HISTFILE` [issue](https://stackoverflow.com/questions/74764599/histfile-in-integrated-terminal-not-the-same-as-normal-terminal) in VSCode's Zsh shell integration, add the following line to your `.vscode/settings.json` file:
 
 ```json
 {
