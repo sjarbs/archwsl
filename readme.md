@@ -155,6 +155,14 @@ find $GNUPGHOME -type f -exec chmod 600 {} \;
 find $GNUPGHOME -type d -exec chmod 700 {} \;
 ```
 
+## Pass
+
+Set up [pass](https://www.passwordstore.org/), cloning your password store repository:
+
+```sh
+git clone https://github.com/sjarbs/password-store $PASSWORD_STORE_DIR
+```
+
 ## VSCode Integration
 
 To resolve the `HISTFILE` [issue](https://stackoverflow.com/questions/74764599/histfile-in-integrated-terminal-not-the-same-as-normal-terminal) in VSCode's Zsh shell integration, add the following line to your `.vscode/settings.json` file:
