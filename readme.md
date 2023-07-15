@@ -67,6 +67,16 @@ i wget moreutils lsd trash-cli fzf bat pfetch pass ffmpeg yt-dlp p7zip # clis
 i git gnupg github-cli nodejs-lts-hydrogen pnpm # dev
 ```
 
+## [wslu](https://wslutiliti.es/wslu/)
+
+```sh
+wget https://pkg.wslutiliti.es/public.key
+sudo pacman-key --add public.key && rm public.key
+sudo pacman-key --lsign-key 2D4C887EB08424F157151C493DD50AA7E055D853
+echo -e "\n# https://wslutiliti.es/wslu/\n[wslutilities]\nServer = https://pkg.wslutiliti.es/arch/" | sudo tee -a /etc/pacman.conf
+yay -Sy --noconfirm && yay -S --noconfirm wslu
+```
+
 ## dotfiles
 
 ```sh
