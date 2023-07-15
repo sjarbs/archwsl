@@ -1,0 +1,57 @@
+#!/bin/zsh
+
+# Dotfiles/OS
+alias yay-install='yay --sync --needed --nodiffmenu --nocleanmenu --noconfirm'
+alias yay-uninstall='yay -Rsu'
+alias yay-ls='pacman -Qei | awk "/^Name/ { name=$3 } /^Groups/ { if ($3 != "base" && $3 != "base-devel") { print name } }"'
+alias yay-clean='sudo yay -Rsn $(yay -Qdtq)'
+alias yay-aur='yay -Qqm'
+
+# Utils
+alias server='python -m http.server 8000'
+alias weight='du -hs'
+touch2() {
+  mkdir -p "$(dirname "$1")" && touch "$1"
+}
+
+# Node
+alias npm='pnpm'
+alias n='pnpm'
+alias touch-package-json='echo "{ \"private\": true }" > package.json'
+alias node-cli-boilerplate='curl -fsSL https://github.com/sobrinojulian/node-cli-boilerplate/archive/main.tar.gz | tar -xz --strip-components=1'
+
+# Git/Github
+alias onefetch='onefetch --no-palette --show-logo never'
+alias of='onefetch'
+alias gi='gh issue list'
+alias gr='git remote -v'
+alias gs='git status'
+alias gl='git log'
+
+# npm i *
+alias ole='ole | less'
+alias boca='aquehorajuegaboca | less'
+alias xtw='xcolor-tailwind'
+
+# better default settings
+alias ls='lsd --almost-all --group-dirs=first'
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias md='mkdir -pv'
+alias df='df -h'
+alias free='free -m'
+alias grep='grep --color=auto'
+alias diff='diff --color=auto'
+# alias xclip='xclip -sel clip'
+
+r() {
+  redshift -PO $1'500'
+}
+
+c() {
+  sudo cpupower frequency-set --max $1'MHz'
+}
+
+stories() {
+  instaloader --login $1 --no-posts --no-profile-pic --no-metadata-json --stories
+}
