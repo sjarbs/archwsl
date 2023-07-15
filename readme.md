@@ -2,6 +2,26 @@
 
 This guide provides instructions for setting up Arch Linux on WSL (Windows Subsystem for Linux). Follow the steps below to install and configure Arch Linux WSL on your Windows machine.
 
+## Prerequisites
+
+Before proceeding with the installation, ensure that you have the following:
+
+```powershell
+# `scoop` package manager
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+irm get.scoop.sh | iex
+
+# scoop buckets
+scoop bucket add extras
+scoop bucket add nerd-fonts
+
+# `sudo` for Windows (An approximation of the Unix sudo command.)
+scoop install sudo
+
+# Nerd Fonts
+scoop install JetBrainsMono-NF
+```
+
 ## [WSL Installation](https://learn.microsoft.com/en-us/windows/wsl/install-manual)
 
 Open PowerShell and run the following commands:
@@ -16,7 +36,7 @@ Restart-Computer
 wsl --update
 wsl --set-default-version 2
 
-# Install Arch Linux WSL using Scoop package manager
+# Install Arch Linux WSL (https://github.com/yuk7/ArchWSL)
 scoop install archwsl
 ```
 
@@ -133,15 +153,6 @@ gpg --edit-key <KEY_ID> # Press Tab for autocompletion
 # See: https://gist.github.com/oseme-techguy/bae2e309c084d93b75a9b25f49718f85#gistcomment-3585593
 find $GNUPGHOME -type f -exec chmod 600 {} \;
 find $GNUPGHOME -type d -exec chmod 700 {} \;
-```
-
-## Fonts
-
-Install Nerd Fonts using the following PowerShell commands:
-
-```powershell
-scoop bucket add nerd-fonts
-scoop install JetBrainsMono-NF
 ```
 
 ## VSCode Integration
