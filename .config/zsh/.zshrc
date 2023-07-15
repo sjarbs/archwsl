@@ -7,6 +7,7 @@ source /usr/share/zsh/scripts/zplug/init.zsh
   zplug "plugins/git", from:oh-my-zsh
   zplug "plugins/command-not-found", from:oh-my-zsh
   zplug "plugins/common-aliases", from:oh-my-zsh
+  zplug "lib/history", from:oh-my-zsh
 zplug load
 
 # Aliases
