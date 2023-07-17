@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # Default programs
-export EDITOR="code"
+export EDITOR="micro"
 export BROWSER="wslview"
 export TERMINAL="windows-terminal"
 
@@ -25,7 +25,7 @@ export ICEAUTHORITY="$XDG_CACHE_HOME/ICEauthority"
 export XINITRC="$XDG_CONFIG_HOME/x11/xinitrc"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/.npmrc"
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh" # Broken in VSCode 1.70.1
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/pythonstartup.py"
 export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java"
 

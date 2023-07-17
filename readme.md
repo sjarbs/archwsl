@@ -91,7 +91,7 @@ Use the following commands to install various programs:
 
 ```sh
 # Prompt and shell-related
-yay -S --needed --noconfirm zsh stow zplug starship
+yay -S --needed --noconfirm zsh stow zplug starship wl-clipboard
 
 # TUIs
 yay -S --needed --noconfirm htop micro man-db man-pages
