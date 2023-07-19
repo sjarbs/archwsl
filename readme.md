@@ -101,6 +101,9 @@ yay -S --needed --noconfirm wget moreutils lsd trash-cli fzf bat pfetch pass ffm
 
 # Development-related
 yay -S --needed --noconfirm git gnupg github-cli nodejs-lts-hydrogen pnpm
+
+# GUIs
+yay -S --needed --noconfirm ttf-apple-emoji obsidian
 ```
 
 ## WSL Utilities

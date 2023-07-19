@@ -16,6 +16,7 @@ touch2() {
 
 # Node
 alias npm='pnpm'
+alias npx='pnpm dlx'
 alias n='pnpm'
 alias touch-package-json='echo "{ \"private\": true }" > package.json'
 alias node-cli-boilerplate='curl -fsSL https://github.com/sobrinojulian/node-cli-boilerplate/archive/main.tar.gz | tar -xz --strip-components=1'
