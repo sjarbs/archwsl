@@ -28,6 +28,7 @@ alias gi='gh issue list'
 alias gr='git remote -v'
 alias gs='git status'
 alias gl='git log'
+alias gdiff='git diff -- ":!package-lock.json"'
 
 # npm i *
 alias ole='ole | less'
@@ -43,7 +44,7 @@ alias df='df -h'
 alias free='free -m'
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
-# alias xclip='xclip -sel clip'
+alias cat='bat'
 
 r() {
   redshift -PO $1'500'
