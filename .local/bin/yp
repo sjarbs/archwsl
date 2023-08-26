@@ -5,4 +5,4 @@ const begin = new Date(year, 0, 1);
 const end = new Date()
 const days = Math.ceil((end - begin) / 8.64e7);
 const pro = days / 365.25 * 100
-console.log(`${pro.toFixed(0)}%`)
+console.log(`${pro.toFixed(2)}%`)

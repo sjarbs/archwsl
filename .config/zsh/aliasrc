@@ -33,6 +33,7 @@ alias gdiff='git diff -- ":!package-lock.json"'
 # npm i *
 alias ole='ole | less'
 alias boca='aquehorajuegaboca | less'
+alias m='mortem 1992/07/07'
 alias xtw='xcolor-tailwind'
 
 # better default settings
