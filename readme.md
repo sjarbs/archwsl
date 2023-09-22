@@ -12,14 +12,15 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 irm get.scoop.sh | iex
 
 # scoop buckets
+scoop install 7zip git
 scoop bucket add extras
 scoop bucket add nerd-fonts
 
-# `sudo` for Windows (An approximation of the Unix sudo command.)
-scoop install sudo
-
 # Nerd Fonts
 scoop install JetBrainsMono-NF
+
+# `sudo` for Windows (An approximation of the Unix sudo command.)
+scoop install sudo
 ```
 
 ## [WSL Installation](https://learn.microsoft.com/en-us/windows/wsl/install-manual)
@@ -70,6 +71,7 @@ useradd -m -G wheel -s /bin/zsh sj
 passwd sj
 exit
 Arch.exe config --default-user sj
+Arch.exe
 ```
 
 ## yay (AUR Helper)
@@ -90,20 +92,14 @@ yay --noconfirm
 Use the following commands to install various programs:
 
 ```sh
-# Prompt and shell-related
+# Prompt and shell
 yay -S --needed --noconfirm zsh stow zplug starship wl-clipboard
-
 # TUIs
 yay -S --needed --noconfirm htop micro man-db man-pages
-
-# Command-line utilities
+# CLIs
 yay -S --needed --noconfirm wget moreutils lsd trash-cli fzf bat pfetch pass ffmpeg yt-dlp p7zip
-
-# Development-related
+# Development
 yay -S --needed --noconfirm git gnupg github-cli nodejs-lts-hydrogen pnpm
-
-# GUIs
-yay -S --needed --noconfirm ttf-apple-emoji obsidian
 ```
 
 ## WSL Utilities
@@ -111,6 +107,7 @@ yay -S --needed --noconfirm ttf-apple-emoji obsidian
 To install `wslu` ([WSL Utilities](https://wslutiliti.es/wslu/)), follow these steps:
 
 ```sh
+yay -S --needed --noconfirm wget
 wget https://pkg.wslutiliti.es/public.key
 sudo pacman-key --add public.key && rm public.key
 sudo pacman-key --lsign-key 2D4C887EB08424F157151C493DD50AA7E055D853
@@ -125,6 +122,7 @@ Create the following directories to prevent unwanted file tracking and permissio
 ```sh
 mkdir -p ~/.local/share/gnupg # `gpg: WARNING: unsafe permissions on homedir`
 mkdir -p ~/.config/micro      # https://github.com/zyedidia/micro/issues/2004
+mkdir -p ~/.config/zsh        # prevents git tracking unwanted zsh files
 ```
 
 ## Dotfiles
@@ -135,6 +133,8 @@ Set up the dotfiles provided in this repository:
 gh auth login
 git clone https://github.com/sjarbs/archwsl ~/dotfiles
 cd ~/dotfiles && stow --adopt .
+exit
+Arch.exe
 zplug install
 ```
 
