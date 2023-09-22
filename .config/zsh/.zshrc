@@ -15,6 +15,10 @@ source /usr/share/zsh/scripts/zplug/init.zsh
   zplug "jirutka/zsh-shift-select",           defer:2
 zplug load
 
+# Keybindings
+# [Ctrl-Backspace] - delete whole backward-word
+bindkey -M emacs '^H' backward-kill-word
+
 # Aliases
 source $ZDOTDIR/aliasrc
 
