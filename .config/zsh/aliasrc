@@ -58,3 +58,5 @@ c() {
 stories() {
   instaloader --login $1 --no-posts --no-profile-pic --no-metadata-json --stories
 }
+
+alias pc='pass -c'
