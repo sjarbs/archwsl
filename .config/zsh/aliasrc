@@ -2,10 +2,12 @@
 
 # Dotfiles/OS
 alias yay-install='yay --sync --needed --nodiffmenu --nocleanmenu --noconfirm'
+alias yay-update='yay --noconfirm'
 alias yay-uninstall='yay -Rsu'
 alias yay-ls='pacman -Qei | awk "/^Name/ { name=$3 } /^Groups/ { if ($3 != "base" && $3 != "base-devel") { print name } }"'
 alias yay-clean='sudo yay -Rsn $(yay -Qdtq)'
 alias yay-aur='yay -Qqm'
+alias yay-mirrorlist='sudo reflector --latest 5 --sort rate --save /etc/pacman.d/mirrorlist'
 
 # Utils
 alias server='python -m http.server 8000'
