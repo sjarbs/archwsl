@@ -15,6 +15,7 @@ alias weight='du -hs'
 touch2() {
   mkdir -p "$(dirname "$1")" && touch "$1"
 }
+alias empty-trash='trash-empty'
 
 # Node
 alias npm='pnpm'
